@@ -10,7 +10,7 @@ const getBody = (req, callback) => {
   req.on("end", function () {
     body += decode.end();
     const body1 = decodeURI(body);
-    const bodyArray = body1.split("&");
+    const bodyArray = body
     const resultHash = {};
     bodyArray.forEach((part) => {
       const partArray = part.split("=");
