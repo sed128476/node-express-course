@@ -1,3 +1,4 @@
+
 const { writeFile, readFile } = require("fs").promises; 
 const first  = "This is the first line of Async Function";
 const second = "This is the second line of Async Function";
@@ -20,5 +21,4 @@ const third  = "This is the third line of Async Function";
     .catch(error => {
       console.log("An error occurred: ", error);
     });
-
 
