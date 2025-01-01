@@ -1,4 +1,5 @@
 const http = require("http");
+const { console } = require("inspector");
 var StringDecoder = require("string_decoder").StringDecoder;
 
 const getBody = (req, callback) => {
@@ -47,6 +48,7 @@ const server = http.createServer((req, res) => {
       if (body["item"]) {
         item = body["item"];
       } else {
+        //something change
         item = "Nothing was entered.";
       }
       // Your code changes would end here
@@ -60,5 +62,12 @@ const server = http.createServer((req, res) => {
   }
 });
 
+
+server.on("request", (req) => {  
+  console.log("event received: ", req.method, req.url);  
+});  
+
+
 server.listen(3000);
 console.log("The server is listening on port 3000.");
+console.log("Add a comment");

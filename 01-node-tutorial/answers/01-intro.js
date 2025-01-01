@@ -1,3 +1,5 @@
+
+
 let  num = Math.random();
 console.log("The Math.random() method returns a random floating point number between 0 (inclusive) and 1 (exclusive)");
 if (num < 0.5){

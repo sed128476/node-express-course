@@ -1,18 +1,24 @@
-const http = require('http');
+const { writeFile, readFile } = require("fs").promises; 
+const first  = "This is the first line of Async Function";
+const second = "This is the second line of Async Function";
+const third  = "This is the third line of Async Function";
 
-const server = http.createServer((req, res) => {
 
-  if (req.url === '/') {
-    res.end('Welcome to our home page')
-  } else if (req.url === '/about') {
-    res.end('Here is our short history')
-  } else {
-    res.end(`
-    <h1>Oops!</h1>
-    <p>We can't seem to find the page you are looking for</p>
-    <a href="/">back home</a>
-    `)
-  }
-})
+ writeFile('temp.txt', `${first}\n`)
+    .then(() => {
+      return writeFile('temp.txt', `${second}\n`, { flag: 'a' }); // Append Line 2
+    })
+    .then(() => {
+      return writeFile('temp.txt', `${third}\n`, { flag: 'a' }); // Append Line 3
+    })
+    .then(() => {
+      return readFile('temp.txt', 'utf8'); // Read the file
+    })
+    .then(data => {
+      console.log(data); // Log the data to the screen
+    })
+    .catch(error => {
+      console.log("An error occurred: ", error);
+    });
 
-server.listen(3000)
+
